@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Reflection;
 using System.Threading;
 
 namespace ContainerProcess
@@ -9,8 +8,6 @@ namespace ContainerProcess
     {
         private static void Main(string[] args)
         {
-            var thisFilePath = Assembly.GetExecutingAssembly().Location;
-
             if (args.Length == 0)
             {
                 var startInfo = new ProcessStartInfo
