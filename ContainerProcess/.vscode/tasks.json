@@ -18,7 +18,20 @@
         {
             "label": "Clean",
             "type": "shell",
-            "command": "Remove-Item '${workspaceFolder}\\bin' -Recurse",
+            "command": "Remove-Item '${workspaceFolder}\\bin' -Recurse"
+        },
+        {
+            "label": "RebuildRelease",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Clean",
+                "BuildRelease"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }
