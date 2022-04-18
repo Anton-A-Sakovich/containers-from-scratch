@@ -1,17 +1,16 @@
-dotnet build -v q
+rm -r /root/bin/
+cp -r bin/ /root/bin/
 
-docker create --name temp mcr.microsoft.com/dotnet/runtime:6.0 dotnet /root/app/ContainerProcess.dll
-docker cp bin/Debug/net6.0/ temp:/root/app
-docker start temp
+docker run --detach --name temp container-process:latest dotnet /root/bin/ContainerProcess.dll
 
-sleep 4
-echo "===================== ps -A f as seen from host process: ====================="
-dotnet bin/Debug/net6.0/ContainerProcess.dll
+echo "================================"
+echo "Host processes:"
+dotnet /root/bin/ContainerProcess.dll
+echo "================================"
 
-sleep 2
-echo "===================== ps -A f as seen from container process: ====================="
+echo "================================"
+echo "Container processes:"
 docker logs temp
+echo "================================"
 
 docker container rm temp
-
-# ./run.sh

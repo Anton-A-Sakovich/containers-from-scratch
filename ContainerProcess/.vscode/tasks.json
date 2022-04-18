@@ -1,0 +1,24 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "BuildRelease",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "--configuration",
+                "Release",
+                "--output",
+                "${workspaceFolder}\\bin",
+                "${workspaceFolder}\\src\\ContainerProcess.csproj"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Clean",
+            "type": "shell",
+            "command": "Remove-Item '${workspaceFolder}\\bin' -Recurse",
+        }
+    ]
+}
