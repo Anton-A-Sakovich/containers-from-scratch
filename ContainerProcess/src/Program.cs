@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Reflection;
 using System.Threading;
 
 namespace ContainerProcess
@@ -8,12 +9,14 @@ namespace ContainerProcess
     {
         private static void Main(string[] args)
         {
+            string executingAssemblyPath = Assembly.GetExecutingAssembly().Location;
+
             if (args.Length == 0)
             {
                 var startInfo = new ProcessStartInfo
                 {
                     FileName = "dotnet",
-                    Arguments = "/root/bin/ContainerProcess.dll" + " " + Guid.NewGuid().ToString(),
+                    Arguments = executingAssemblyPath + " " + Guid.NewGuid().ToString(),
                 };
 
                 var process = new Process
