@@ -10,15 +10,15 @@
                 "--configuration",
                 "Release",
                 "--output",
-                "${workspaceFolder}\\bin",
-                "${workspaceFolder}\\src\\ContainerProcess.csproj"
+                "${workspaceFolder}/bin",
+                "${workspaceFolder}/src/ContainerProcess.csproj"
             ],
             "problemMatcher": []
         },
         {
             "label": "Clean",
             "type": "shell",
-            "command": "Remove-Item '${workspaceFolder}\\bin' -Recurse"
+            "command" : "rm -r -f ${workspaceFolder}/bin/*"
         },
         {
             "label": "RebuildRelease",
