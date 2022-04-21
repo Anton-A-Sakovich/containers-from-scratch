@@ -3,13 +3,11 @@
 #include <sched.h>
 #include <sys/wait.h>
 #include <unistd.h>
-#include <sys/utsname.h>
 
 #include <sys/mman.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <errno.h>
 
 #define STACK_SIZE (1024 * 1024)
 
@@ -32,7 +30,6 @@ int main(int argc, char **argv)
     pid_t pid = clone(child_main, pLastStackByte,  CLONE_NEWPID | SIGCHLD, NULL);
     if (pid == -1)
     {
-        printf("%i", errno);
         return 2;
     }
 
